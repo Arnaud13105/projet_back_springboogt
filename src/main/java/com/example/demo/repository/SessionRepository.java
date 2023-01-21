@@ -1,5 +1,9 @@
 package com.example.demo.repository;
 
-public interface SessionRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.example.demo.entities.Session;
+
+public interface SessionRepository extends JpaRepository<Session, Long> {
 
 }

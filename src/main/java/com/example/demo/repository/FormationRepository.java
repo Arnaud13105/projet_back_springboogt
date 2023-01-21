@@ -1,5 +1,9 @@
 package com.example.demo.repository;
 
-public interface FormationRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.example.demo.entities.Formation;
+
+public interface FormationRepository extends JpaRepository<Formation, Long>{
 
 }
