@@ -24,18 +24,18 @@ public class FormationRestController {
 
 	@Autowired
 	private IFormationService formationService;
-	
+
 	@GetMapping("/formations")
-	public ResponseEntity<List<Formation>> getAll(){
-		return new ResponseEntity<List<Formation>>(formationService.findAll(),HttpStatus.OK);
+	public ResponseEntity<List<Formation>> getAll() {
+		return new ResponseEntity<List<Formation>>(formationService.findAll(), HttpStatus.OK);
 	}
-	
+
 	@PostMapping("/formations")
-	public ResponseEntity<Formation> create(@RequestBody Formation formation){
-		return new ResponseEntity<Formation>(formationService.saveOrUpdate(formation),  HttpStatus.CREATED);
-		
+	public ResponseEntity<Formation> create(@RequestBody Formation formation) {
+		return new ResponseEntity<Formation>(formationService.saveOrUpdate(formation), HttpStatus.CREATED);
+
 	}
-	
+
 	@PutMapping("/formations/{id}")
 	public ResponseEntity<Formation> editById(@PathVariable long id, @RequestBody Formation formation) {
 		return formationService.findById(id).map((p) -> {
@@ -51,6 +51,7 @@ public class FormationRestController {
 		}).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
 				"La Formation avec l'id " + id + "n'existe pas"));
 	}
+
 	@GetMapping("/formations/{id}")
 	public ResponseEntity<Formation> getById(@PathVariable long id) {
 		return formationService.findById(id).map((p) -> {
@@ -58,37 +59,33 @@ public class FormationRestController {
 		}).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
 				"La Formation avec l'id " + id + "n'existe pas"));
 	}
-	
+
 	@DeleteMapping("/formations/{id}")
-	public ResponseEntity<Boolean> delete(@PathVariable long id)  {
+	public ResponseEntity<Boolean> delete(@PathVariable long id) {
 		return formationService.findById(id).map((p) -> {
 			formationService.delete(p.getId());
 			return new ResponseEntity<>(true, HttpStatus.OK);
 		}).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
 				"La Formation avec l'id " + id + "n'existe pas"));
-	}	
+	}
 
 	@GetMapping("/showSome1/{nomFormation}")
-	public ResponseEntity<List<Formation>> getAll(
-			@PathVariable(value = "nomFormation") String nomFormation ) {
+	public ResponseEntity<List<Formation>> getAll(@PathVariable(value = "nomFormation") String nomFormation) {
 		return new ResponseEntity<List<Formation>>(formationService.findByNomFormation(nomFormation), HttpStatus.OK);
 	}
-	
+
 	@GetMapping("/showSome2/{domaine}")
-	public ResponseEntity<List<Formation>> getAll2(
-			@PathVariable(value = "domaine") String domaine ) {
+	public ResponseEntity<List<Formation>> getAll2(@PathVariable(value = "domaine") String domaine) {
 		return new ResponseEntity<List<Formation>>(formationService.findByDomaine(domaine), HttpStatus.OK);
 	}
-	
+
 	@GetMapping("/showSome3/{theme}")
-	public ResponseEntity<List<Formation>> getAll3(
-			@PathVariable(value = "theme") String theme ) {
+	public ResponseEntity<List<Formation>> getAll3(@PathVariable(value = "theme") String theme) {
 		return new ResponseEntity<List<Formation>>(formationService.findByTheme(theme), HttpStatus.OK);
 	}
-	
+
 	@GetMapping("/showSome4/{prix}")
-	public ResponseEntity<List<Formation>> getAll4(
-			@PathVariable(value = "prix") String prix ) {
+	public ResponseEntity<List<Formation>> getAll4(@PathVariable(value = "prix") String prix) {
 		return new ResponseEntity<List<Formation>>(formationService.findByPrix(prix), HttpStatus.OK);
 	}
 }
