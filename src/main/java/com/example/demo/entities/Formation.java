@@ -62,8 +62,5 @@ public class Formation {
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.REMOVE }, mappedBy = "formation")
 	private List<DemandeIntra> demandeIntras = new ArrayList<>();
 
-	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.REMOVE }, mappedBy = "formation")
-	private List<DemandePerso> demandePersos = new ArrayList<>();
-
+	
 }
