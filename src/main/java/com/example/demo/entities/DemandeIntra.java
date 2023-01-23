@@ -17,10 +17,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 7edc24f7a89dbe2ea75d9351c4f3dc8b4cc9492b
 @Entity
 @Data
 @NoArgsConstructor
@@ -53,10 +50,7 @@ public class DemandeIntra {
 	@Column(name = "nbr_inscrit")
 	private int nbrInscrits;
 
-<<<<<<< HEAD
 	
-=======
->>>>>>> 7edc24f7a89dbe2ea75d9351c4f3dc8b4cc9492b
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JsonIgnore
 	@JoinColumn(name = "id_formation", referencedColumnName = "id")

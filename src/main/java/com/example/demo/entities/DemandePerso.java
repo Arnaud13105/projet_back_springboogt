@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -41,7 +43,7 @@ public class DemandePerso {
 	
 
 	@ManyToOne
-	
+	@JsonIgnore
 	@JoinColumn(name = "id_formation", referencedColumnName = "id")
 	private Formation formation;
 
