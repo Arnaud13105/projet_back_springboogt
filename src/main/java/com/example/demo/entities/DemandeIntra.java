@@ -17,6 +17,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -46,9 +47,11 @@ public class DemandeIntra {
 	@Column(name = "eligible_cpf")
 	@NonNull
 	private String eligibleCPF;
+	
 	@Column(name = "nbr_inscrit")
 	private int nbrInscrits;
 
+	
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JsonIgnore
 	@JoinColumn(name = "id_formation", referencedColumnName = "id")
