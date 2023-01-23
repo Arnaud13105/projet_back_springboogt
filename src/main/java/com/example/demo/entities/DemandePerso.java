@@ -5,8 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -35,6 +33,10 @@ public class DemandePerso {
 	private String telephone;
 	@NonNull
 	@Column(name = "eligible_cpf")
+<<<<<<< HEAD
+=======
+	@NonNull
+>>>>>>> souraya
 	private String eligibleCPF;
 	@NonNull
 	private String besoins;
@@ -42,9 +44,12 @@ public class DemandePerso {
 	private String objectifs;
 	
 
+<<<<<<< HEAD
 	@ManyToOne
 	@JsonIgnore
 	@JoinColumn(name = "id_formation", referencedColumnName = "id")
 	private Formation formation;
 
+=======
+>>>>>>> souraya
 }

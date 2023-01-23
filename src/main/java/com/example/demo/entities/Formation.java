@@ -54,16 +54,12 @@ public class Formation {
 	@Column(name = "prerequis")
 	private String prerequis;
 
-	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.REMOVE }, mappedBy = "formation")
+	@JsonIgnore
 	private List<Session> sessions = new ArrayList<>();
 
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL }, mappedBy = "formation")
 	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.REMOVE }, mappedBy = "formation")
 	private List<DemandeIntra> demandeIntras = new ArrayList<>();
-
-	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.REMOVE }, mappedBy = "formation")
-	private List<DemandePerso> demandePersos = new ArrayList<>();
 
 }
