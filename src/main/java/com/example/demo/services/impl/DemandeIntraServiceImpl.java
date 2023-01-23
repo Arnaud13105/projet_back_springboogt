@@ -69,38 +69,10 @@ public class DemandeIntraServiceImpl implements IDemandeIntraService {
 	}
 
 	@Override
-	public Optional<DemandeIntra> saveOneDemandeIntraByFormation(long idFormation, DemandeIntra demandeIntra) {
-		// TODO Auto-generated method stub
-		return formationRepository.findById(idFormation).map(formation -> {
-			DemandeIntra dIntra = new DemandeIntra();
-			dIntra.setNom(demandeIntra.getNom());
-			dIntra.setPrenom(demandeIntra.getPrenom());
-			dIntra.setEntreprise(demandeIntra.getEntreprise());
-			dIntra.setTelephone(demandeIntra.getTelephone());
-			dIntra.setDateDebut(demandeIntra.getDateDebut());
-			dIntra.setLieu(demandeIntra.getLieu());
-			dIntra.setEligibleCPF(demandeIntra.getEligibleCPF());
-			dIntra.setNbrInscrits(demandeIntra.getNbrInscrits());
-			formation.getDemandeIntras().add(demandeIntra);
-			demandeIntraRepository.save(demandeIntra);
-			return dIntra;
-		});
-	}
-
-	@Override
 	public Optional<DemandeIntra> getOneDemandeIntraByFormationId(long idFormation, long idDemandeIntra) {
 		return formationRepository.findById(idFormation).map(formation -> {
 			DemandeIntra dIntra = demandeIntraRepository.findById(idDemandeIntra).get();
 			return dIntra;
-		});
-	}
-
-	@Override
-	public Optional<DemandeIntra> assignOneDemandeIntraByFormation(long idFormation, long idDemandeIntra) {
-		return formationRepository.findById(idFormation).map(formation -> {
-			DemandeIntra dIntra = demandeIntraRepository.findById(idDemandeIntra).get();
-			formation.getDemandeIntras().add(dIntra);
-			return demandeIntraRepository.save(dIntra);
 		});
 	}
 

@@ -13,11 +13,7 @@ public interface IDemandeIntraService extends IService<DemandeIntra> {
 
 	List<DemandeIntra> findByEligibleCPF(String eligibleCPF);
 
-	Optional<DemandeIntra> saveOneDemandeIntraByFormation(long idFormation, DemandeIntra demandeIntra);
-
 	Optional<DemandeIntra> getOneDemandeIntraByFormationId(long idFormation, long idDemandeIntra);
-
-	Optional<DemandeIntra> assignOneDemandeIntraByFormation(long idFormation, long idDemandeIntra);
 
 	Optional<DemandeIntra> deleteOneDemandeIntraByFormationId(long idFormation, long idDemandeIntra);
 

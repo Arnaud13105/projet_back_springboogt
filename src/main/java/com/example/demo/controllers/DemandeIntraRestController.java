@@ -83,5 +83,7 @@ public class DemandeIntraRestController {
 	public ResponseEntity<List<DemandeIntra>> getAll3(@PathVariable(value = "email") String email) {
 		return new ResponseEntity<List<DemandeIntra>>(demandeIntraService.findByEmail(email), HttpStatus.OK);
 	}
+	
+	
 
 }
