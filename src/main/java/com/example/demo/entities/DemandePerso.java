@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -31,23 +33,13 @@ public class DemandePerso {
 	private String entreprise;
 	@NonNull
 	private String telephone;
-	@Column(name = "eligible_cpf")
-<<<<<<< HEAD
-=======
 	@NonNull
->>>>>>> arnaud
+	@Column(name = "eligible_cpf")
 	private String eligibleCPF;
 	@NonNull
 	private String besoins;
 	@NonNull
 	private String objectifs;
+	
 
-<<<<<<< HEAD
-	@ManyToOne
-	@JsonIgnore
-	@JoinColumn(name = "id_formation", referencedColumnName = "id")
-	private Formation formation;
-
-=======
->>>>>>> arnaud
 }
