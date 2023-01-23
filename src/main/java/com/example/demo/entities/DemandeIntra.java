@@ -16,9 +16,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
 @Entity
 @Data
 @NoArgsConstructor
@@ -51,8 +49,8 @@ public class DemandeIntra {
 	@Column(name = "nbr_inscrit")
 	private int nbrInscrits;
 
-	@JsonIgnore
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JsonIgnore
 	@JoinColumn(name = "id_formation", referencedColumnName = "id")
 	private Formation formation;
 
