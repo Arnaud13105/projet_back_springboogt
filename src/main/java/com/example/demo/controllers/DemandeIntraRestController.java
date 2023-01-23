@@ -20,6 +20,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.example.demo.entities.DemandeIntra;
 import com.example.demo.services.IDemandeIntraService;
+import com.example.demo.services.IFormationService;
 
 @RestController
 @CrossOrigin("*")
@@ -28,6 +29,9 @@ public class DemandeIntraRestController {
 
 	@Autowired
 	private IDemandeIntraService demandeIntraService;
+
+	@Autowired
+	private IFormationService formationService;
 
 	@GetMapping("/demandeintra")
 	public ResponseEntity<List<DemandeIntra>> getAll() {
@@ -83,7 +87,21 @@ public class DemandeIntraRestController {
 	public ResponseEntity<List<DemandeIntra>> getAll3(@PathVariable(value = "email") String email) {
 		return new ResponseEntity<List<DemandeIntra>>(demandeIntraService.findByEmail(email), HttpStatus.OK);
 	}
-	
+
+	@GetMapping("/formations/{formationId}/demandeintra/{demandeIntraId}")
+	public ResponseEntity<DemandeIntra> getDemandeIntraByFormationId(
+			@PathVariable(value = "formationId") long formationId,
+			@PathVariable(value = "demandeIntraId") long demandeIntraId) {
+		formationService.findById(formationId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
+				"formation not found with id : " + formationId));
+		demandeIntraService.findById(demandeIntraId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
+				"demande intra not found with id : " + demandeIntraId));
+		DemandeIntra demandeIntra = demandeIntraService.getOneDemandeIntraByFormation(formationId, demandeIntraId)
+				.get();
+		return new ResponseEntity<>(demandeIntra, HttpStatus.CREATED);
+	}
+
 	
 
+	
 }

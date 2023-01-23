@@ -69,38 +69,13 @@ public class DemandeIntraServiceImpl implements IDemandeIntraService {
 	}
 
 	@Override
-	public Optional<DemandeIntra> getOneDemandeIntraByFormationId(long idFormation, long idDemandeIntra) {
+	public Optional<DemandeIntra> getOneDemandeIntraByFormation(long idFormation, long idDemandeIntra) {
 		return formationRepository.findById(idFormation).map(formation -> {
 			DemandeIntra dIntra = demandeIntraRepository.findById(idDemandeIntra).get();
 			return dIntra;
 		});
 	}
 
-	@Override
-	public Optional<DemandeIntra> deleteOneDemandeIntraByFormationId(long idFormation, long idDemandeIntra) {
-		return formationRepository.findById(idFormation).map(formation -> {
-			DemandeIntra dIntra = demandeIntraRepository.findById(idDemandeIntra).get();
-			formation.getDemandeIntras().remove(dIntra);
-			return demandeIntraRepository.save(dIntra);
-		});
-	}
 
-	@Override
-	public Optional<DemandeIntra> editOneDemandeIntraByFormation(long idFormation, long idDemandeIntra,
-			DemandeIntra demandeIntra) {
-		return formationRepository.findById(idFormation).map(formation -> {
-			DemandeIntra dIntra = demandeIntraRepository.findById(idDemandeIntra).get();
-			dIntra.setNom(demandeIntra.getNom());
-			dIntra.setPrenom(demandeIntra.getPrenom());
-			dIntra.setEntreprise(demandeIntra.getEntreprise());
-			dIntra.setTelephone(demandeIntra.getTelephone());
-			dIntra.setDateDebut(demandeIntra.getDateDebut());
-			dIntra.setLieu(demandeIntra.getLieu());
-			dIntra.setEligibleCPF(demandeIntra.getEligibleCPF());
-			dIntra.setNbrInscrits(demandeIntra.getNbrInscrits());
-			formation.getDemandeIntras().add(dIntra);
-			return dIntra;
-		});
-	}
 
 }
