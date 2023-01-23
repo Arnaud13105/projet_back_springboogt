@@ -30,7 +30,7 @@ public class UsersSession {
 	@ManyToMany(mappedBy = "usersSessions")
 	@JsonIgnore
 	private List<User> users = new ArrayList<>();
-	
+
 	@ManyToOne
 	@JoinColumn(name = "id_session", referencedColumnName = "id")
 	private Session session;

@@ -1,9 +1,9 @@
 package com.example.demo.entities;
 
-import java.sql.Date;
-
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,9 +11,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
 @Entity
 @Data
 @NoArgsConstructor
@@ -22,20 +27,32 @@ public class DemandeIntra {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@NonNull
 	private Long id;
+	@NonNull
 	private String nom;
+	@NonNull
 	private String prenom;
+	@NonNull
 	private String entreprise;
+	@NonNull
 	private String telephone;
+	@NonNull
+	private String email;
 	@Column(name = "date_debut")
-	private Date dateDebut;
+	/* @Temporal(TemporalType.DATE) */
+	@NonNull
+	private String dateDebut;
+	@NonNull
 	private String lieu;
 	@Column(name = "eligible_cpf")
-	private boolean eligibleCPF;
+	@NonNull
+	private String eligibleCPF;
 	@Column(name = "nbr_inscrit")
 	private int nbrInscrits;
 
-	@ManyToOne
+	@JsonIgnore
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_formation", referencedColumnName = "id")
 	private Formation formation;
 
