@@ -62,8 +62,5 @@ public class Formation {
 	@JsonIgnore
 	private List<DemandeIntra> demandeIntras = new ArrayList<>();
 
-<<<<<<< HEAD
-	
-=======
->>>>>>> 7edc24f7a89dbe2ea75d9351c4f3dc8b4cc9492b
+
 }
