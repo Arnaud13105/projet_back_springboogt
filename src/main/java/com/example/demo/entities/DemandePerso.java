@@ -29,12 +29,13 @@ public class DemandePerso {
 	private String entreprise;
 	@NonNull
 	private String telephone;
-	@Column(name = "eligible_cpf")
 	@NonNull
+	@Column(name = "eligible_cpf")
 	private String eligibleCPF;
 	@NonNull
 	private String besoins;
 	@NonNull
 	private String objectifs;
+	
 
 }
