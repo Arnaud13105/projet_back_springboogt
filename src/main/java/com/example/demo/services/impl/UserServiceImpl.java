@@ -73,6 +73,4 @@ public class UserServiceImpl implements IUserService {
 		return userRepository.findByStatut(statut);
 	}
 
-	
-
 }
