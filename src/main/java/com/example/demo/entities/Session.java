@@ -1,11 +1,5 @@
 package com.example.demo.entities;
 
-import java.sql.Date;
-import java.sql.Time;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,11 +7,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 
 @Entity
 @Data
@@ -26,20 +20,27 @@ import lombok.NoArgsConstructor;
 public class Session {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@NonNull
 	private Long id;
+	@NonNull
 	@Column(name = "date_debut")
-	private Date dateDebut;
+	private String dateDebut;
+	@NonNull
 	@Column(name = "date_fin")
-	private Date dateFin;
-	private Time duree;
+	private String dateFin;
+	@NonNull
 	private String lieu;
+	@NonNull
 	private String salle;
+	@NonNull
 	private String formateur;
+	@NonNull
 	private String support;
+	@NonNull
 	private String autres;
 
-	@OneToMany(cascade = { CascadeType.PERSIST, CascadeType.REMOVE }, mappedBy = "session")
-	private List<UsersSession> usersSessions = new ArrayList<>();
+//	@OneToMany(cascade = { CascadeType.PERSIST, CascadeType.REMOVE }, mappedBy = "session")
+//	private List<UsersSession> usersSessions = new ArrayList<>();
 
 	@ManyToOne
 	@JoinColumn(name = "id_formation", referencedColumnName = "id")
