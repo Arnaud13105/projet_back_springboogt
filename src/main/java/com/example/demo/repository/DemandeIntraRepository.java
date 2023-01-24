@@ -14,6 +14,6 @@ public interface DemandeIntraRepository extends JpaRepository<DemandeIntra, Long
 
 	List<DemandeIntra> findByEligibleCPF(String eligibleCPF);
 
-	List<DemandeIntra> findDemandeIntraByFormationId(long idFormation);
+	List<DemandeIntra> findDemandeIntraByFormationId(long idFormation) ;
 
 }

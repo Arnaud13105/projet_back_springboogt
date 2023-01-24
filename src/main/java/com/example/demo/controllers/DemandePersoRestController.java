@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.example.demo.dto.DemandePersoDto;
 import com.example.demo.entities.DemandePerso;
 import com.example.demo.services.IDemandePersoService;
 
@@ -35,8 +36,18 @@ public class DemandePersoRestController {
 	}
 
 	@PostMapping("/demandeperso")
-	public ResponseEntity<DemandePerso> create(@RequestBody DemandePerso demandePerso) {
+	public ResponseEntity<DemandePerso> create(@RequestBody @Valid DemandePersoDto demandePersoDto) {
+		DemandePerso demandePerso = new DemandePerso();
+		demandePerso.setNom(demandePersoDto.getNom());
+		demandePerso.setPrenom(demandePersoDto.getPrenom());
+		demandePerso.setEmail(demandePersoDto.getEmail());
+		demandePerso.setEntreprise(demandePersoDto.getEntreprise());
+		demandePerso.setTelephone(demandePersoDto.getTelephone());
+		demandePerso.setEligibleCPF(demandePersoDto.getEligibleCPF());
+		demandePerso.setBesoins(demandePersoDto.getBesoins());
+		demandePerso.setObjectifs(demandePersoDto.getObjectifs());
 		return new ResponseEntity<DemandePerso>(demandePersoService.saveOrUpdate(demandePerso), HttpStatus.CREATED);
+
 	}
 
 	@GetMapping("/demandeperso/{id}")
@@ -49,19 +60,21 @@ public class DemandePersoRestController {
 	}
 
 	@PutMapping("/demandeperso/{id}")
-	public ResponseEntity<DemandePerso> editById(@PathVariable long id, @RequestBody @Valid DemandePerso demandePerso) {
-		return demandePersoService.findById(id).map((dPerso) -> {
-			dPerso.setNom(demandePerso.getNom());
-			dPerso.setPrenom(demandePerso.getPrenom());
-			dPerso.setEntreprise(demandePerso.getEntreprise());
-			dPerso.setTelephone(demandePerso.getTelephone());
-			dPerso.setEligibleCPF(demandePerso.getEligibleCPF());
-			dPerso.setBesoins(demandePerso.getBesoins());
-			dPerso.setObjectifs(demandePerso.getObjectifs());
-			demandePersoService.saveOrUpdate(dPerso);
-			return new ResponseEntity<DemandePerso>(dPerso, HttpStatus.OK);
+	public ResponseEntity<DemandePerso> editById(@PathVariable long id,
+			@RequestBody @Valid DemandePersoDto demandePersoDto) {
+		return demandePersoService.findById(id).map((d) -> {
+			d.setNom(demandePersoDto.getNom());
+			d.setPrenom(demandePersoDto.getPrenom());
+			d.setEmail(demandePersoDto.getEmail());
+			d.setEntreprise(demandePersoDto.getEntreprise());
+			d.setTelephone(demandePersoDto.getTelephone());
+			d.setEligibleCPF(demandePersoDto.getEligibleCPF());
+			d.setBesoins(demandePersoDto.getBesoins());
+			d.setObjectifs(demandePersoDto.getObjectifs());
+			demandePersoService.saveOrUpdate(d);
+			return new ResponseEntity<DemandePerso>(d, HttpStatus.OK);
 		}).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
-				"La demande personnalisée avec l'id" + id + "n'existe pas"));
+				"demandePerso avec l'id" + id + "n'existe pas"));
 	}
 
 	@DeleteMapping("/demandeperso/{id}")

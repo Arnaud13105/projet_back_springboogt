@@ -26,6 +26,8 @@ public class DemandePerso {
 	@NonNull
 	private String prenom;
 	@NonNull
+	private String email;
+	@NonNull
 	private String entreprise;
 	@NonNull
 	private String telephone;
@@ -36,6 +38,5 @@ public class DemandePerso {
 	private String besoins;
 	@NonNull
 	private String objectifs;
-	
 
 }

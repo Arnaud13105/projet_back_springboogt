@@ -1,5 +1,7 @@
 package com.example.demo.entities;
 
+import java.time.LocalDate;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -39,9 +41,8 @@ public class DemandeIntra {
 	@NonNull
 	private String email;
 	@Column(name = "date_debut")
-	/* @Temporal(TemporalType.DATE) */
 	@NonNull
-	private String dateDebut;
+	private LocalDate dateDebut;
 	@NonNull
 	private String lieu;
 	@Column(name = "eligible_cpf")

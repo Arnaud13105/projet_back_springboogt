@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.example.demo.dto.DemandeIntraDto;
 import com.example.demo.entities.DemandeIntra;
 import com.example.demo.services.IDemandeIntraService;
 import com.example.demo.services.IFormationService;
@@ -39,8 +40,19 @@ public class DemandeIntraRestController {
 	}
 
 	@PostMapping("/demandeintra")
-	public ResponseEntity<DemandeIntra> create(@RequestBody DemandeIntra demandeIntra) {
+	public ResponseEntity<DemandeIntra> create(@RequestBody @Valid DemandeIntraDto demandeIntraDto) {
+		DemandeIntra demandeIntra = new DemandeIntra();
+		demandeIntra.setNom(demandeIntraDto.getNom());
+		demandeIntra.setPrenom(demandeIntraDto.getPrenom());
+		demandeIntra.setEntreprise(demandeIntraDto.getEntreprise());
+		demandeIntra.setTelephone(demandeIntraDto.getTelephone());
+		demandeIntra.setEmail(demandeIntraDto.getEmail());
+		demandeIntra.setDateDebut(demandeIntraDto.getDateDebut());// 2022/01/03 ou 2022-01-03
+		demandeIntra.setLieu(demandeIntraDto.getLieu());
+		demandeIntra.setEligibleCPF(demandeIntraDto.getEligibleCPF());
+		demandeIntra.setNbrInscrits(demandeIntraDto.getNbrInscrits());
 		return new ResponseEntity<DemandeIntra>(demandeIntraService.saveOrUpdate(demandeIntra), HttpStatus.CREATED);
+
 	}
 
 	@GetMapping("/demandeintra/{id}")
@@ -53,16 +65,18 @@ public class DemandeIntraRestController {
 	}
 
 	@PutMapping("/demandeintra/{id}")
-	public ResponseEntity<DemandeIntra> editById(@PathVariable long id, @RequestBody @Valid DemandeIntra demandeIntra) {
+	public ResponseEntity<DemandeIntra> editById(@PathVariable long id,
+			@RequestBody @Valid DemandeIntraDto demandeIntraDto) {
 		return demandeIntraService.findById(id).map((dIntra) -> {
-			dIntra.setNom(demandeIntra.getNom());
-			dIntra.setPrenom(demandeIntra.getPrenom());
-			dIntra.setEntreprise(demandeIntra.getEntreprise());
-			dIntra.setTelephone(demandeIntra.getTelephone());
-			dIntra.setDateDebut(demandeIntra.getDateDebut());
-			dIntra.setLieu(demandeIntra.getLieu());
-			dIntra.setEligibleCPF(demandeIntra.getEligibleCPF());
-			dIntra.setNbrInscrits(demandeIntra.getNbrInscrits());
+			dIntra.setNom(demandeIntraDto.getNom());
+			dIntra.setPrenom(demandeIntraDto.getPrenom());
+			dIntra.setEntreprise(demandeIntraDto.getEntreprise());
+			dIntra.setTelephone(demandeIntraDto.getTelephone());
+			dIntra.setEmail(demandeIntraDto.getEmail());
+			dIntra.setDateDebut(demandeIntraDto.getDateDebut());// 2022/01/03 ou 2022-01-03
+			dIntra.setLieu(demandeIntraDto.getLieu());
+			dIntra.setEligibleCPF(demandeIntraDto.getEligibleCPF());
+			dIntra.setNbrInscrits(demandeIntraDto.getNbrInscrits());
 			demandeIntraService.saveOrUpdate(dIntra);
 			return new ResponseEntity<DemandeIntra>(dIntra, HttpStatus.OK);
 		}).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
@@ -101,7 +115,4 @@ public class DemandeIntraRestController {
 		return new ResponseEntity<>(demandeIntra, HttpStatus.CREATED);
 	}
 
-	
-
-	
 }
