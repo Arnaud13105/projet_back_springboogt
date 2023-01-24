@@ -1,5 +1,6 @@
 package com.example.demo.services.impl;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,11 +43,10 @@ public class SessionServiceImpl implements ISessionService {
 	}
 
 	@Override
-	public List<Session> findByDateDebut(String dateDebut) {
+	public List<Session> findByDateDebut(LocalDate dateDebut) {
 		// TODO Auto-generated method stub
 		return sessionRepository.findByDateDebut(dateDebut);
 	}
-
 
 	@Override
 	public List<Session> findByLieu(String lieu) {

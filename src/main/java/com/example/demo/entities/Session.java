@@ -1,5 +1,7 @@
 package com.example.demo.entities;
 
+import java.time.LocalDate;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,10 +26,10 @@ public class Session {
 	private Long id;
 	@NonNull
 	@Column(name = "date_debut")
-	private String dateDebut;
+	private LocalDate dateDebut;
 	@NonNull
 	@Column(name = "date_fin")
-	private String dateFin;
+	private LocalDate dateFin;
 	@NonNull
 	private String lieu;
 	@NonNull
@@ -38,9 +40,6 @@ public class Session {
 	private String support;
 	@NonNull
 	private String autres;
-
-//	@OneToMany(cascade = { CascadeType.PERSIST, CascadeType.REMOVE }, mappedBy = "session")
-//	private List<UsersSession> usersSessions = new ArrayList<>();
 
 	@ManyToOne
 	@JoinColumn(name = "id_formation", referencedColumnName = "id")
