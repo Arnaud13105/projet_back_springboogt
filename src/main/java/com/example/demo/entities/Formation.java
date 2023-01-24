@@ -20,7 +20,6 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
-
 @RequiredArgsConstructor
 @Entity
 @Data
@@ -61,6 +60,5 @@ public class Formation {
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL }, mappedBy = "formation")
 	@JsonIgnore
 	private List<DemandeIntra> demandeIntras = new ArrayList<>();
-
 
 }

@@ -42,8 +42,8 @@ public class DemandeIntraDto {
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) // (pattern = "yyyy/mm/dd")
 	private LocalDate dateDebut;
 
-	@NotEmpty()
-	@Size(max = 10, message = "Lieu peut être 'local de formation' = Formation ou 'local de l'entreprise' = Entreprise")
+//	@NotEmpty()
+//	@Size(max = 10, message = "Lieu peut être 'local de formation' = Formation ou 'local de l'entreprise' = Entreprise")
 	private String lieu;
 
 	@NotEmpty()

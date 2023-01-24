@@ -11,14 +11,14 @@ import com.example.demo.repository.FormationRepository;
 import com.example.demo.services.IFormationService;
 
 @Service("formationService")
-public class FormationServiceImpl implements IFormationService{
-	
+public class FormationServiceImpl implements IFormationService {
+
 	@Autowired
 	private FormationRepository formationRepository;
 
 	@Override
 	public List<Formation> findAll() {
-		
+
 		return formationRepository.findAll();
 	}
 
@@ -36,7 +36,7 @@ public class FormationServiceImpl implements IFormationService{
 
 	@Override
 	public boolean delete(long id) {
-		formationRepository.deleteById(id);		
+		formationRepository.deleteById(id);
 		return true;
 	}
 
@@ -64,9 +64,4 @@ public class FormationServiceImpl implements IFormationService{
 		return formationRepository.findByPrix(prix);
 	}
 
-
-	
 }
-
-
-

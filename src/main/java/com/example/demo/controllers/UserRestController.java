@@ -41,7 +41,7 @@ public class UserRestController {
 		User user = new User();
 		user.setNom(userDto.getNom());
 		user.setPrenom(userDto.getPrenom());
-		user.setDateDebut(userDto.getDateDebut());// 2022/01/03 ou 2022-01-03
+		user.setDateNaissance(userDto.getDateNaissance());// "yyyy/mm/dd
 		user.setEmail(userDto.getEmail());
 		user.setAdresse(userDto.getAdresse());
 		user.setTelephone(userDto.getTelephone());
@@ -64,7 +64,7 @@ public class UserRestController {
 		return userService.findById(id).map((u) -> {
 			u.setNom(userDto.getNom());
 			u.setPrenom(userDto.getPrenom());
-			u.setDateDebut(userDto.getDateDebut());// "yyyy/mm/dd
+			u.setDateNaissance(userDto.getDateNaissance());// "yyyy/mm/dd
 			u.setEmail(userDto.getEmail());
 			u.setAdresse(userDto.getAdresse());
 			u.setTelephone(userDto.getTelephone());
