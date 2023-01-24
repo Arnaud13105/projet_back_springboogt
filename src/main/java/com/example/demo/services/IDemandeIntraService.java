@@ -15,9 +15,5 @@ public interface IDemandeIntraService extends IService<DemandeIntra> {
 
 	Optional<DemandeIntra> getOneDemandeIntraByFormationId(long idFormation, long idDemandeIntra);
 
-	Optional<DemandeIntra> deleteOneDemandeIntraByFormationId(long idFormation, long idDemandeIntra);
-
-	Optional<DemandeIntra> editOneDemandeIntraByFormation(long idFormation, long idDemandeIntra,
-			DemandeIntra demandeIntra);
 
 }
