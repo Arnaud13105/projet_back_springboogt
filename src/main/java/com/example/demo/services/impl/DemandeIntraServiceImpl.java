@@ -76,6 +76,4 @@ public class DemandeIntraServiceImpl implements IDemandeIntraService {
 		});
 	}
 
-
-
 }

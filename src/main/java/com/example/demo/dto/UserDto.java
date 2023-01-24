@@ -8,8 +8,6 @@ import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -30,7 +28,7 @@ public class UserDto {
 	@NotNull()
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 //	@JsonFormat(pattern = "yyyy/mm/dd")
-	private LocalDate dateDebut;
+	private LocalDate dateNaissance;
 
 	@NotEmpty()
 	@Size(min = 2, message = "L'email doit contenir minimum 2 caractères")
@@ -46,6 +44,7 @@ public class UserDto {
 
 	@NotEmpty()
 	@Size(min = 10, message = "telephone; doit contenir minimum 10 caractères")
+	@Size(max = 10, message = "telephone; doit contenir maximum 10 caractères")
 	private String telephone;
 
 	@NotEmpty()

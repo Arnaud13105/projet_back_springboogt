@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.example.demo.entities.User;
 
 public interface UserRepository extends JpaRepository<User, Long> {
-	
+
 	List<User> findByNom(String nom);
 
 	List<User> findByPrenom(String prenom);
@@ -17,6 +17,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	List<User> findByEntreprise(String entreprise);
 
 	List<User> findByStatut(String statut);
-	
 
 }

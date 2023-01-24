@@ -2,10 +2,8 @@ package com.example.demo.entities;
 
 import java.time.LocalDate;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -49,7 +47,7 @@ public class DemandeIntra {
 	@Column(name = "nbr_inscrit")
 	private int nbrInscrits;
 
-	@ManyToOne()
+	@ManyToOne
 	@JoinColumn(name = "id_formation", referencedColumnName = "id")
 	private Formation formation;
 

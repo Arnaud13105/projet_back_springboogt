@@ -27,7 +27,7 @@ public class User {
 	@NonNull
 	private String prenom;
 	@NonNull
-	private LocalDate dateDebut;
+	private LocalDate dateNaissance;
 	@NonNull
 	private String email;
 	@NonNull

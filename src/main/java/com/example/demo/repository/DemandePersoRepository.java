@@ -12,5 +12,4 @@ public interface DemandePersoRepository extends JpaRepository<DemandePerso, Long
 
 	List<DemandePerso> findByEligibleCPF(String eligibleCPF);
 
-
 }

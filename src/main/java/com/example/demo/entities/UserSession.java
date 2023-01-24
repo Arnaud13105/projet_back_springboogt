@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-//@Table
+
 @IdClass(UserSessionId.class)
 public class UserSession {
 

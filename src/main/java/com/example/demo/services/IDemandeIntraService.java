@@ -15,5 +15,4 @@ public interface IDemandeIntraService extends IService<DemandeIntra> {
 
 	Optional<DemandeIntra> getOneDemandeIntraByFormation(long idFormation, long idDemandeIntra);
 
-
 }

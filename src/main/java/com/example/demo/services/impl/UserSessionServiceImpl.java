@@ -1,6 +1,5 @@
 package com.example.demo.services.impl;
 
-
 import java.util.List;
 import java.util.Optional;
 
@@ -14,11 +13,10 @@ import com.example.demo.repository.UserSessionRepository;
 import com.example.demo.services.IUsersSessionService;
 
 public class UserSessionServiceImpl implements IUsersSessionService {
-	
 
 	@Autowired
 	private UserSessionRepository userSessionRepository;
-	
+
 	@Override
 	public Optional<UserSession> findById(long id) {
 		// TODO Auto-generated method stub
@@ -38,7 +36,7 @@ public class UserSessionServiceImpl implements IUsersSessionService {
 
 	@Override
 	public UserSession saveOrUpdate(UserSession o) {
-		
+
 		return userSessionRepository.save(o);
 	}
 
@@ -61,7 +59,7 @@ public class UserSessionServiceImpl implements IUsersSessionService {
 
 	@Override
 	public List<UserSession> findSessionsByIdUser(long idUser) {
-		return userSessionRepository.findSessionsByIdUser(idUser);	
+		return userSessionRepository.findSessionsByIdUser(idUser);
 	}
 
-}	
+}

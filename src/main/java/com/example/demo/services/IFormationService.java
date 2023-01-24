@@ -5,7 +5,7 @@ import java.util.List;
 import com.example.demo.entities.Formation;
 
 public interface IFormationService extends IService<Formation> {
-	
+
 	List<Formation> findByNomFormation(String nomFormation);
 
 	List<Formation> findByDomaine(String domaine);

@@ -42,7 +42,6 @@ public class DemandeIntraDto {
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) // (pattern = "yyyy/mm/dd")
 	private LocalDate dateDebut;
 
-	
 	private String lieu;
 
 	@NotEmpty()
