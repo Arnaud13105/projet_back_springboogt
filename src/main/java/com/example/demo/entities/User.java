@@ -1,5 +1,7 @@
 package com.example.demo.entities;
 
+import java.time.LocalDate;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,7 +27,7 @@ public class User {
 	@NonNull
 	private String prenom;
 	@NonNull
-	private String date;
+	private LocalDate dateDebut;
 	@NonNull
 	private String email;
 	@NonNull

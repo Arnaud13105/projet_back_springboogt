@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.example.demo.dto.UserDto;
 import com.example.demo.entities.User;
 import com.example.demo.services.IUserService;
 
@@ -36,7 +37,16 @@ public class UserRestController {
 	}
 
 	@PostMapping("/user")
-	public ResponseEntity<User> create(@RequestBody User user) {
+	public ResponseEntity<User> create(@RequestBody @Valid UserDto userDto) {
+		User user = new User();
+		user.setNom(userDto.getNom());
+		user.setPrenom(userDto.getPrenom());
+		user.setDateDebut(userDto.getDateDebut());// 2022/01/03 ou 2022-01-03
+		user.setEmail(userDto.getEmail());
+		user.setAdresse(userDto.getAdresse());
+		user.setTelephone(userDto.getTelephone());
+		user.setEntreprise(userDto.getEntreprise());
+		user.setStatut(userDto.getStatut());
 		return new ResponseEntity<User>(userService.saveOrUpdate(user), HttpStatus.CREATED);
 
 	}
@@ -50,16 +60,16 @@ public class UserRestController {
 	}
 
 	@PutMapping("/user/{id}")
-	public ResponseEntity<User> editById(@PathVariable long id, @RequestBody @Valid User user) {
+	public ResponseEntity<User> editById(@PathVariable long id, @RequestBody @Valid UserDto userDto) {
 		return userService.findById(id).map((u) -> {
-			u.setNom(user.getNom());
-			u.setPrenom(user.getPrenom());
-			u.setDate(user.getDate());
-			u.setEmail(user.getEmail());
-			u.setAdresse(user.getAdresse());
-			u.setTelephone(user.getTelephone());
-			u.setEntreprise(user.getEntreprise());
-			u.setStatut(user.getStatut());
+			u.setNom(userDto.getNom());
+			u.setPrenom(userDto.getPrenom());
+			u.setDateDebut(userDto.getDateDebut());// "yyyy/mm/dd
+			u.setEmail(userDto.getEmail());
+			u.setAdresse(userDto.getAdresse());
+			u.setTelephone(userDto.getTelephone());
+			u.setEntreprise(userDto.getEntreprise());
+			u.setStatut(userDto.getStatut());
 			userService.saveOrUpdate(u);
 			return new ResponseEntity<User>(u, HttpStatus.OK);
 		}).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "user avec l'id" + id + "n'existe pas"));
