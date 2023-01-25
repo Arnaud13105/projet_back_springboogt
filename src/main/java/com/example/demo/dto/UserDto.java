@@ -52,5 +52,11 @@ public class UserDto {
 	@NotEmpty()
 	@Size(min = 2, message = "statut doit contenir minimum 2 caractères")
 	private String statut;
+	
+	@NotEmpty()
+	@Size(min = 8, message = "password; doit contenir minimum 8 caractères")
+	@Size(max =16, message = "password; doit contenir maximum 16 caractères")
+	private String password;
+	
 
 }

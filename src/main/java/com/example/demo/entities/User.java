@@ -38,5 +38,7 @@ public class User {
 	private String telephone;
 	@NonNull
 	private String statut;
+	@NonNull
+	private String password;
 
 }
