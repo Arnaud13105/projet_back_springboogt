@@ -61,7 +61,7 @@ public class SessionServiceImpl implements ISessionService {
 	}
 
 	@Override
-	public List<Session> findByFormationId(Formation formationId) {
+	public List<Session> findByFormationId(long formationId) {
 		// TODO Auto-generated method stub
 		return sessionRepository.findByFormationId(formationId);
 	}

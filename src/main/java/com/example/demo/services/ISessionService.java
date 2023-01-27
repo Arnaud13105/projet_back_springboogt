@@ -14,6 +14,6 @@ public interface ISessionService extends IService<Session> {
 
 	List<Session> findBySalle(String salle);
 
-	List<Session> findByFormationId(Formation formationId);
+	List<Session> findByFormationId(long formationId);
 
 }

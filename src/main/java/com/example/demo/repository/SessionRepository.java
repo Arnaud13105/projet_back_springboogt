@@ -16,6 +16,6 @@ public interface SessionRepository extends JpaRepository<Session, Long> {
 
 	List<Session> findBySalle(String salle);
 
-	List<Session> findByFormationId(Formation formationId);
+	List<Session> findByFormationId(Long formationId);
 
 }

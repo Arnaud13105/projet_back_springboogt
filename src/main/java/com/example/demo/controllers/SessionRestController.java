@@ -96,9 +96,9 @@ public class SessionRestController {
 
 	}
 
-	@GetMapping("/showSome8/{formation}")
-	public ResponseEntity<List<Session>> getAll4(@PathVariable(value = "formation") Formation formation) {
-		return new ResponseEntity<List<Session>>(sessionService.findByFormationId(formation), HttpStatus.OK);
+	@GetMapping("/showSome8/{formationId}")
+	public ResponseEntity<List<Session>> getAll4(@PathVariable(value = "formationId") long formationId) {
+		return new ResponseEntity<List<Session>>(sessionService.findByFormationId(formationId), HttpStatus.OK);
 
 	}
 
