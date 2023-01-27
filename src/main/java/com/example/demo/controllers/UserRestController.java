@@ -47,6 +47,7 @@ public class UserRestController {
 		user.setTelephone(userDto.getTelephone());
 		user.setEntreprise(userDto.getEntreprise());
 		user.setStatut(userDto.getStatut());
+		user.setPassword(userDto.getPassword());
 		return new ResponseEntity<User>(userService.saveOrUpdate(user), HttpStatus.CREATED);
 
 	}
