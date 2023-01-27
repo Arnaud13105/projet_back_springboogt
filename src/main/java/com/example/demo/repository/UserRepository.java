@@ -18,4 +18,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
 	List<User> findByStatut(String statut);
 
+	
+	User findByEmailAndPassword(String Emain, String password);
+
+
 }

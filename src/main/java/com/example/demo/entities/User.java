@@ -2,6 +2,7 @@ package com.example.demo.entities;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -32,7 +33,7 @@ public class User {
 	private String email;
 	@NonNull
 	private String adresse;
-	@NonNull
+	@Column(nullable = true)
 	private String entreprise;
 	@NonNull
 	private String telephone;

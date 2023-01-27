@@ -38,8 +38,8 @@ public class UserDto {
 	@Size(min = 2, message = "l'adresse doit contenir minimum 2 caractères")
 	private String adresse;
 
-	@NotEmpty()
-	@Size(min = 2, message = "entreprise doit contenir minimum 2 caractères")
+//	@NotEmpty()
+//	@Size(min = 2, message = "entreprise doit contenir minimum 2 caractères")
 	private String entreprise;
 
 	@NotEmpty()
@@ -47,8 +47,8 @@ public class UserDto {
 	@Size(max = 10, message = "telephone; doit contenir maximum 10 caractères")
 	private String telephone;
 
-	@NotEmpty()
-	@Size(min = 2, message = "statut doit contenir minimum 2 caractères")
+//	@NotEmpty()
+//	@Size(min = 2, message = "statut doit contenir minimum 2 caractères")
 	private String statut;
 	
 	@NotEmpty()
