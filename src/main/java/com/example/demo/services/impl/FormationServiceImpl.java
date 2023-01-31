@@ -35,8 +35,8 @@ public class FormationServiceImpl implements IFormationService {
 	}
 
 	@Override
-	public boolean delete(long id) {
-		formationRepository.deleteById(id);
+	public boolean delete(long idFormation) {
+		formationRepository.deleteById(idFormation);
 		return true;
 	}
 

@@ -19,20 +19,23 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.example.demo.entities.Formation;
 import com.example.demo.entities.Session;
+import com.example.demo.services.IFormationService;
 import com.example.demo.services.ISessionService;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/api")
+@RequestMapping("/api/formations")
 public class SessionRestController {
 
 	@Autowired
 	private ISessionService sessionService;
 
+	@Autowired
+	private IFormationService formationService;
+
 	@GetMapping("/sessions")
-	public ResponseEntity<List<Session>> getAll() {
+	public ResponseEntity<List<Session>> getAllSession() {
 		return new ResponseEntity<List<Session>>(sessionService.findAll(), HttpStatus.OK);
 	}
 
@@ -43,8 +46,8 @@ public class SessionRestController {
 	}
 
 	@PutMapping("/sessions/{id}")
-	public ResponseEntity<Session> editById(@PathVariable long id, @RequestBody Session session) {
-		return sessionService.findById(id).map((p) -> {
+	public ResponseEntity<Session> editById(@PathVariable long idSession, @RequestBody Session session) {
+		return sessionService.findById(idSession).map((p) -> {
 			p.setDateDebut(session.getDateDebut());
 			p.setDateFin(session.getDateFin());
 			p.setLieu(session.getLieu());
@@ -56,7 +59,7 @@ public class SessionRestController {
 			sessionService.saveOrUpdate(session);
 			return new ResponseEntity<Session>(p, HttpStatus.OK);
 		}).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
-				"La session avec l'id " + id + " n'existe pas"));
+				"La session avec l'id " + idSession + " n'existe pas"));
 	}
 
 	@GetMapping("/sessions/{id}")
@@ -96,10 +99,13 @@ public class SessionRestController {
 
 	}
 
-	@GetMapping("/showSome8/{formation}")
-	public ResponseEntity<List<Session>> getAll4(@PathVariable(value = "formation") Formation formation) {
-		return new ResponseEntity<List<Session>>(sessionService.findByFormationId(formation), HttpStatus.OK);
-
+	@GetMapping("/{formationId}/sessions")
+	public ResponseEntity<List<Session>> getById1(@PathVariable(value = "formationId") long idFormation) {
+		return formationService.findById(idFormation).map((f) -> {
+			List<Session> sessions = sessionService.getSessionsByFormationId(f.getId());
+			return new ResponseEntity<>(sessions, HttpStatus.OK);
+		}).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
+				"La personne avec l'id " + idFormation + " n'existe pas"));
 	}
 
 }

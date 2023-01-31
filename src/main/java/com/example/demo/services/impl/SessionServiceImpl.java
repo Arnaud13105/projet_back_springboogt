@@ -7,7 +7,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.entities.Formation;
 import com.example.demo.entities.Session;
 import com.example.demo.repository.SessionRepository;
 import com.example.demo.services.ISessionService;
@@ -37,8 +36,8 @@ public class SessionServiceImpl implements ISessionService {
 	}
 
 	@Override
-	public boolean delete(long id) {
-		sessionRepository.deleteById(id);
+	public boolean delete(long idSessions) {
+		sessionRepository.deleteById(idSessions);
 		return true;
 	}
 
@@ -61,9 +60,9 @@ public class SessionServiceImpl implements ISessionService {
 	}
 
 	@Override
-	public List<Session> findByFormationId(Formation formationId) {
+	public List<Session> getSessionsByFormationId(long idFormation) {
 		// TODO Auto-generated method stub
-		return sessionRepository.findByFormationId(formationId);
+		return sessionRepository.findSessionsByFormationId(idFormation);
 	}
 
 }

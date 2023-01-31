@@ -115,4 +115,13 @@ public class DemandeIntraRestController {
 		return new ResponseEntity<>(demandeIntra, HttpStatus.CREATED);
 	}
 
+	@PostMapping("/formations/{formationId}/demandeintra")
+	public ResponseEntity<DemandeIntra> addDemandeIntraByFormation(@PathVariable(value = "formationId") long id,
+			@RequestBody @Valid DemandeIntra demandeIntra) {
+		DemandeIntra demandeIntraToSave = demandeIntraService.saveOneDemandeIntraByFormation(id, demandeIntra)
+				.orElseThrow(
+						() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Formation not found with id : " + id));
+		return new ResponseEntity<>(demandeIntraToSave, HttpStatus.CREATED);
+	}
+
 }

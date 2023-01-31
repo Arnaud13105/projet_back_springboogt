@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.dto.DemandeIntraDto;
 import com.example.demo.entities.DemandeIntra;
 import com.example.demo.repository.DemandeIntraRepository;
 import com.example.demo.repository.FormationRepository;
@@ -76,4 +77,22 @@ public class DemandeIntraServiceImpl implements IDemandeIntraService {
 		});
 	}
 
+	@Override
+	public Optional<DemandeIntra> saveOneDemandeIntraByFormation(long idFormation, DemandeIntra demandeIntra) {
+		return formationRepository.findById(idFormation).map(formation -> {
+			DemandeIntra dIntra = new DemandeIntra();
+			dIntra.setNom(demandeIntra.getNom());
+			dIntra.setPrenom(demandeIntra.getPrenom());
+			dIntra.setEntreprise(demandeIntra.getEntreprise());
+			dIntra.setTelephone(demandeIntra.getTelephone());
+			dIntra.setEmail(demandeIntra.getEmail());
+			dIntra.setDateDebut(demandeIntra.getDateDebut());// 2022/01/03 ou 2022-01-03
+			dIntra.setLieu(demandeIntra.getLieu());
+			dIntra.setEligibleCPF(demandeIntra.getEligibleCPF());
+			dIntra.setNbrInscrits(demandeIntra.getNbrInscrits());
+			formation.getDemandeIntras().add(demandeIntra);
+			demandeIntraRepository.save(demandeIntra);
+			return dIntra;
+		});
+	}
 }
